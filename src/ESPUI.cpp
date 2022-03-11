@@ -283,7 +283,7 @@ void ESPUIClass::prepareFileSystem()
 #endif
 
 #if defined(ESP32)
-    LITTLEFS.format();
+    //LITTLEFS.format();
 
     if (!LITTLEFS.begin(true))
     {
@@ -337,6 +337,8 @@ void ESPUIClass::prepareFileSystem()
 #endif
 
     // Now write
+    LITTLEFS.mkdir("/css");
+    LITTLEFS.mkdir("/js");	
     writeFile("/index.htm", HTML_INDEX);
 
     writeFile("/css/style.css", CSS_STYLE);
